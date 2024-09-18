@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+		body, h2, table {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.container {
+			background-color: #ffffff;
+			padding: 20px 40px;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.container h2 {
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 1.8em;
+			color: #333;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		table td {
+			padding: 10px;
+			vertical-align: top;
+			font-size: 1em;
+			color: #333;
+		}
+
+		table label {
+			font-weight: bold;
+		}
+
+		table input[type="text"],
+		table input[type="email"],
+		table input[type="tel"],
+		table input[type="date"],
+		table select,
+		table textarea {
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 1em;
+		}
+
+		table input[type="submit"],
+		table input[type="reset"] {
+			width: 100%;
+			padding: 10px;
+			background-color: #28a745;
+			color: #ffffff;
+			border: none;
+			border-radius: 4px;
+			font-size: 1em;
+			cursor: pointer;
+		}
+
+		.center {
+			text-align: center;
+		}
+
+		table input[type="submit"]:hover {
+			background-color: #218838;
+		}
+
+		.custom-file-upload {
+			display: inline-block;
+			padding: 10px 20px;
+			cursor: pointer;
+			background-color: #007bff;
+			color: #ffffff;
+			border-radius: 4px;
+			font-size: 1em;
+			margin-bottom: 20px;
+		}
+
+		input[type="file"] {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Registration Form</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td><label for="fname">First Name:</label></td>
+                    <td><input type="text" id="fname" name="fname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="lname">Last Name:</label></td>
+                    <td><input type="text" id="lname" name="lname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone Number:</label></td>
+                    <td><input type="tel" id="phone" name="phone" required></td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="3" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="course">Course:</label></td>
+                    <td>
+                        <select id="course" name="course" required>
+                            <option value="cs">Computer Science</option>
+                            <option value="ee">Electrical Engineering</option>
+                            <option value="me">Mechanical Engineering</option>
+                            <option value="ce">Civil Engineering</option>
+                        </select>
+                    </td>
+                </tr>
+				<tr>
+					<td><label>Upload photo</label></td>
+					<td>
+						<label for="fileUpload" class="custom-file-upload">Choose Photo</label>
+						<input type="file" id="fileUpload" name="fileUpload" accept="image/*">
+					</td>
+				</tr>
+                <tr>
+                    <td class="center">
+                        <input type="reset" value="Reset">
+                    </td>
+					<td class="center">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+                    
+            </table>
+        </form>
+    </div>
+</body>
+</html>

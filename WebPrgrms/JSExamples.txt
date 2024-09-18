@@ -1,0 +1,140 @@
+Write a js code to illustrate use of math objects
+
+// JavaScript code demonstrating various Math object methods
+
+// 1. Math.PI - Gives the value of Pi (3.14159...)
+console.log("Value of Pi:", Math.PI);
+
+// 2. Math.round() - Rounds to the nearest integer
+let number = 4.7;
+console.log("Rounding 4.7:", Math.round(number));
+
+// 3. Math.ceil() - Rounds up to the next integer
+console.log("Ceiling of 4.1:", Math.ceil(4.1));
+
+// 4. Math.floor() - Rounds down to the previous integer
+console.log("Floor of 4.9:", Math.floor(4.9));
+
+// 5. Math.sqrt() - Returns the square root of a number
+let num = 16;
+console.log("Square root of 16:", Math.sqrt(num));
+
+// 6. Math.pow() - Exponentiation (raises to a power)
+let base = 2;
+let exponent = 3;
+console.log("2 to the power of 3:", Math.pow(base, exponent));
+
+// 7. Math.abs() - Returns the absolute value
+let negativeNumber = -42;
+console.log("Absolute value of -42:", Math.abs(negativeNumber));
+
+// 8. Math.random() - Generates a random number between 0 and 1
+console.log("Random number between 0 and 1:", Math.random());
+
+// 9. Math.max() - Returns the largest of the given numbers
+console.log("Maximum of 3, 7, 9, 2:", Math.max(3, 7, 9, 2));
+
+// 10. Math.min() - Returns the smallest of the given numbers
+console.log("Minimum of 3, 7, 9, 2:", Math.min(3, 7, 9, 2));
+
+// 11. Generate a random integer between two values (min and max)
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log("Random integer between 1 and 10:", getRandomInt(1, 10));
+
+// 12. Math.log() - Returns the natural logarithm (base e)
+console.log("Natural logarithm of 10:", Math.log(10));
+
+// 13. Math.sin(), Math.cos(), and Math.tan() - Trigonometric functions
+let radians = Math.PI / 4; // 45 degrees in radians
+console.log("Sin of 45 degrees:", Math.sin(radians));
+console.log("Cos of 45 degrees:", Math.cos(radians));
+console.log("Tan of 45 degrees:", Math.tan(radians));
+
+
+Write a js code to illustrate use of string object methods
+
+// JavaScript code demonstrating various String object methods
+
+let str = "Hello, JavaScript!";
+let str2 = "   JavaScript is fun!   ";
+
+// 1. charAt() - Returns the character at a specified index
+console.log("Character at index 1:", str.charAt(1)); // Output: e
+
+// 2. charCodeAt() - Returns the Unicode value of the character at a given position
+console.log("Unicode value of character at index 1:", str.charCodeAt(1)); // Output: 101 (Unicode for 'e')
+
+// 3. concat() - Joins two or more strings
+let combinedStr = str.concat(" Let's learn it together.");
+console.log("Concatenated string:", combinedStr);
+
+// 4. includes() - Checks if a string contains a specified value
+console.log("Does the string include 'JavaScript'? ", str.includes("JavaScript")); // Output: true
+
+// 5. indexOf() - Returns the position of the first occurrence of a substring
+console.log("First occurrence of 'Java':", str.indexOf("Java")); // Output: 7
+
+// 6. lastIndexOf() - Returns the position of the last occurrence of a substring
+console.log("Last occurrence of 'JavaScript':", str.lastIndexOf("JavaScript")); // Output: 7
+
+// 7. toUpperCase() - Converts a string to uppercase
+console.log("Uppercase version:", str.toUpperCase()); // Output: HELLO, JAVASCRIPT!
+
+// 8. toLowerCase() - Converts a string to lowercase
+console.log("Lowercase version:", str.toLowerCase()); // Output: hello, javascript!
+
+// 9. trim() - Removes whitespace from both sides of a string
+console.log("Trimmed string:", str2.trim()); // Output: "JavaScript is fun!"
+
+// 10. slice() - Extracts a section of a string and returns it as a new string
+console.log("Slice from index 7 to 17:", str.slice(7, 17)); // Output: JavaScript
+
+// 11. substring() - Similar to slice(), but cannot accept negative indices
+console.log("Substring from index 7 to 17:", str.substring(7, 17)); // Output: JavaScript
+
+// 12. replace() - Replaces a specified value with another value in a string
+let replacedStr = str.replace("JavaScript", "JS");
+console.log("Replaced string:", replacedStr); // Output: Hello, JS!
+
+// 13. split() - Splits a string into an array of substrings based on a separator
+let splitStr = str.split(" ");
+console.log("Splitting the string into words:", splitStr); // Output: ["Hello,", "JavaScript!"]
+
+// 14. startsWith() - Checks if a string starts with a specified value
+console.log("Does the string start with 'Hello'? ", str.startsWith("Hello")); // Output: true
+
+// 15. endsWith() - Checks if a string ends with a specified value
+console.log("Does the string end with 'JavaScript!'? ", str.endsWith("JavaScript!")); // Output: true
+
+// 16. repeat() - Returns a new string with a specified number of copies of the original string
+console.log("Repeating the string 3 times:", str.repeat(3)); // Output: Hello, JavaScript!Hello, JavaScript!Hello, JavaScript!
+
+// 17. length - Returns the length of the string
+console.log("Length of the string:", str.length); // Output: 18
+
+
+JS function to search number of target string occurence in paragraph
+
+function countOccurrences(paragraph, target) {
+    // Make the search case-insensitive by converting both paragraph and target to lowercase
+    const lowerCaseParagraph = paragraph.toLowerCase();
+    const lowerCaseTarget = target.toLowerCase();
+
+    // Use a regular expression with the 'g' flag to find all matches
+    const regex = new RegExp(lowerCaseTarget, 'g');
+    
+    // Match the target string in the paragraph and return the number of occurrences
+    const matches = lowerCaseParagraph.match(regex);
+    
+    return matches ? matches.length : 0; // If matches exist, return their count, otherwise return 0
+}
+
+// Example usage:
+const paragraph = "JavaScript is a great language. I love JavaScript because JavaScript is versatile.";
+const targetString = "JavaScript";
+
+const count = countOccurrences(paragraph, targetString);
+console.log(`The target string "${targetString}" occurs ${count} times in the paragraph.`);
