@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+</head>
+<body>
+    <h1>JavaScript Console Output</h1>
+    <script>
+        let a = 5;
+        let b = 10;
+        let result;
+
+        result = a & b;
+        console.log("Bitwise AND of a & b: ", result);
+
+        let str1 = "Hello";
+        let str2 = "World";
+        let message = str1 + str2;
+        console.log("String Concatenation: ", message);
+
+        let x = 10;
+        console.log("Unary operator example(++x): ", ++x);
+
+        let y = 20;
+        console.log("Binary operator example(y+x): ", y + x);
+
+        let z = (++x, ++y, x + y);
+        console.log("Using comma operator : ", z);
+
+        let num = 15;
+        if (num > 10) {
+            console.log("The number is greater than 10");
+        } else {
+            console.log("The number is 10 or lesser");
+        }
+
+        let grade = 'B';
+        switch (grade) {
+            case 'A':
+                console.log("Excellent");
+                break;
+            case 'B':
+                console.log("Good");
+                break;
+            case 'C':
+                console.log("Average");
+                break;
+            default:
+                console.log("Grade not recognized");
+        }
+
+        let students = [
+            { name: "John", age: 10, grade: "B" },
+            { name: "Alice", age: 19, grade: "A" },
+            { name: "Bob", age: 17, grade: "C" },
+        ];
+
+        function displayStudents() {
+            students.forEach(student => {
+                console.log(`Name: ${student.name}, Age: ${student.age}, Grade: ${student.grade}`);
+            });
+        }
+
+        students.sort((a, b) => a.age - b.age);
+        console.log("Students sorted by age: ");
+        displayStudents();
+
+        let filteredStudents = students.filter(student => student.grade === 'A');
+        console.log("Students with grade A: ");
+        filteredStudents.forEach(student => {
+            console.log(`Name: ${student.name}, Age: ${student.age}`);
+        });
+
+        let book = {
+            title: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            year: 1960
+        };
+
+        function displayBookDetails() {
+            console.log("Book Details: ");
+            console.log(`Title: ${book.title}`);
+            console.log(`Author: ${book.author}`);
+            console.log(`Year: ${book.year}`);
+        }
+
+        displayBookDetails();
+    </script>
+</body>
+</html>
