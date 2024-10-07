@@ -1,0 +1,203 @@
+--ORDER PROCESSING DATABASE MANAGEMENT
+
+-- Create CUSTOMER table
+CREATE TABLE CUSTOMER (
+    custno INT PRIMARY KEY,
+    cname VARCHAR(50),
+    city VARCHAR(50)
+);
+
+-- Create ORDER table
+CREATE TABLE ORDERS (
+    orderno INT PRIMARY KEY,
+    odate DATE,
+    ord_amt REAL,
+    custno INT,
+    FOREIGN KEY (custno) REFERENCES CUSTOMER(custno)
+);
+
+-- Create ORDER_ITEM table
+CREATE TABLE ORDER_ITEM (
+    orderno INT,
+    itemno INT,
+    qty INT,
+    PRIMARY KEY (orderno, itemno),
+    FOREIGN KEY (orderno) REFERENCES ORDER_PROCESS(orderno),
+    FOREIGN KEY (itemno) REFERENCES ITEM(itemno)
+);
+
+-- Create ITEM table
+CREATE TABLE ITEM (
+    itemno INT PRIMARY KEY,
+    unitprice REAL
+);
+
+-- Create SHIPMENT table
+CREATE TABLE SHIPMENT (
+    orderno INT,
+    warehouseno INT,
+    ship_date DATE,
+    PRIMARY KEY (orderno, warehouseno),
+    FOREIGN KEY (orderno) REFERENCES ORDER_PROCESS(orderno),
+    FOREIGN KEY (warehouseno) REFERENCES WAREHOUSE(warehouseno)
+);
+
+-- Create WAREHOUSE table
+CREATE TABLE WAREHOUSE (
+    warehouseno INT PRIMARY KEY,
+    city VARCHAR(50)
+);
+
+-- Insert into CUSTOMER
+INSERT INTO CUSTOMER VALUES (1, 'John Doe', 'New York');
+INSERT INTO CUSTOMER VALUES (2, 'Jane Smith', 'Los Angeles');
+INSERT INTO CUSTOMER VALUES (3, 'Alice Brown', 'Chicago');
+INSERT INTO CUSTOMER VALUES (4, 'Bob Johnson', 'Houston');
+INSERT INTO CUSTOMER VALUES (5, 'Emily Davis', 'San Francisco');
+
+-- Insert into ORDER_PROCESS
+INSERT INTO ORDER_PROCESS VALUES (101, '2024-01-01', 1000, 1);
+INSERT INTO ORDER_PROCESS VALUES (102, '2024-02-15', 1500, 2);
+INSERT INTO ORDER_PROCESS VALUES (103, '2024-03-10', 2000, 3);
+INSERT INTO ORDER_PROCESS VALUES (104, '2024-04-05', 500, 4);
+INSERT INTO ORDER_PROCESS VALUES (105, '2024-05-12', 2500, 5);
+
+-- Insert into ITEM
+INSERT INTO ITEM VALUES (201, 50);
+INSERT INTO ITEM VALUES (202, 100);
+INSERT INTO ITEM VALUES (203, 150);
+INSERT INTO ITEM VALUES (204, 200);
+INSERT INTO ITEM VALUES (205, 250);
+
+-- Insert into ORDER_ITEM
+INSERT INTO ORDER_ITEM VALUES (101, 201, 2);
+INSERT INTO ORDER_ITEM VALUES (102, 202, 3);
+INSERT INTO ORDER_ITEM VALUES (103, 203, 4);
+INSERT INTO ORDER_ITEM VALUES (104, 204, 1);
+INSERT INTO ORDER_ITEM VALUES (105, 205, 5);
+
+-- Insert into WAREHOUSE
+INSERT INTO WAREHOUSE VALUES (301, 'New York');
+INSERT INTO WAREHOUSE VALUES (302, 'Los Angeles');
+INSERT INTO WAREHOUSE VALUES (303, 'Chicago');
+INSERT INTO WAREHOUSE VALUES (304, 'Houston');
+INSERT INTO WAREHOUSE VALUES (305, 'San Francisco');
+
+-- Insert into SHIPMENT
+INSERT INTO SHIPMENT VALUES (101, 301, '2024-01-05');
+INSERT INTO SHIPMENT VALUES (102, 302, '2024-02-20');
+INSERT INTO SHIPMENT VALUES (103, 303, '2024-03-15');
+INSERT INTO SHIPMENT VALUES (104, 304, '2024-04-10');
+INSERT INTO SHIPMENT VALUES (105, 305, '2024-05-20');
+
+SELECT orderno, ship_date
+FROM SHIPMENT s
+JOIN WAREHOUSE w ON s.warehouseno = w.warehouseno
+WHERE w.city = 'New York';
+
+SELECT c.cname, COUNT(o.orderno) AS no_of_orders, AVG(o.ord_amt) AS avg_order_amt
+FROM CUSTOMER c
+JOIN ORDER_PROCESS o ON c.custno = o.custno
+GROUP BY c.custno, c.cname;
+
+SELECT o.orderno, o.odate, s.ship_date
+FROM ORDER_PROCESS o
+JOIN SHIPMENT s ON o.orderno = s.orderno
+WHERE s.ship_date > o.odate + INTERVAL '30' DAY;
+
+
+--INSURANCE DATABASE MANAGEMENT
+-- PERSON Table
+CREATE TABLE PERSON (
+    driver_idno VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(200)
+);
+
+-- CAR Table
+CREATE TABLE CAR (
+    regno VARCHAR(20) PRIMARY KEY,
+    model VARCHAR(50),
+    year INT
+);
+
+-- ACCIDENT Table
+CREATE TABLE ACCIDENT (
+    report_no INT PRIMARY KEY,
+    date DATE,
+    location VARCHAR(100)
+);
+
+-- OWNS Table
+CREATE TABLE OWNS (
+    driver_idno VARCHAR(20),
+    regno VARCHAR(20),
+    PRIMARY KEY (driver_idno, regno),
+    FOREIGN KEY (driver_idno) REFERENCES PERSON(driver_idno),
+    FOREIGN KEY (regno) REFERENCES CAR(regno)
+);
+
+-- PARTICIPATED Table
+CREATE TABLE PARTICIPATED (
+    driver_idno VARCHAR(20),
+    regno VARCHAR(20),
+    report_no INT,
+    damage_amount INT,
+    PRIMARY KEY (driver_idno, regno, report_no),
+    FOREIGN KEY (driver_idno) REFERENCES PERSON(driver_idno),
+    FOREIGN KEY (regno) REFERENCES CAR(regno),
+    FOREIGN KEY (report_no) REFERENCES ACCIDENT(report_no)
+);
+
+-- Insert data into PERSON
+INSERT INTO PERSON VALUES ('D001', 'John Doe', '123 Main St');
+INSERT INTO PERSON VALUES ('D002', 'Jane Smith', '456 Oak St');
+INSERT INTO PERSON VALUES ('D003', 'Alice Brown', '789 Pine St');
+INSERT INTO PERSON VALUES ('D004', 'Bob Johnson', '321 Maple St');
+INSERT INTO PERSON VALUES ('D005', 'Charlie Davis', '654 Elm St');
+
+-- Insert data into CAR
+INSERT INTO CAR VALUES ('R001', 'Toyota Corolla', 2020);
+INSERT INTO CAR VALUES ('R002', 'Honda Civic', 2019);
+INSERT INTO CAR VALUES ('R003', 'Ford Focus', 2021);
+INSERT INTO CAR VALUES ('R004', 'Tesla Model 3', 2022);
+INSERT INTO CAR VALUES ('R005', 'Chevrolet Malibu', 2018);
+
+-- Insert data into ACCIDENT
+INSERT INTO ACCIDENT VALUES (11, '2023-01-15', 'Downtown');
+INSERT INTO ACCIDENT VALUES (12, '2022-07-20', 'Uptown');
+INSERT INTO ACCIDENT VALUES (13, '2022-10-30', 'Suburbs');
+INSERT INTO ACCIDENT VALUES (14, '2023-03-12', 'City Center');
+INSERT INTO ACCIDENT VALUES (15, '2023-06-25', 'Eastside');
+
+-- Insert data into OWNS
+INSERT INTO OWNS VALUES ('D001', 'R001');
+INSERT INTO OWNS VALUES ('D002', 'R002');
+INSERT INTO OWNS VALUES ('D003', 'R003');
+INSERT INTO OWNS VALUES ('D004', 'R004');
+INSERT INTO OWNS VALUES ('D005', 'R005');
+
+-- Insert data into PARTICIPATED
+INSERT INTO PARTICIPATED VALUES ('D001', 'R001', 11, 5000);
+INSERT INTO PARTICIPATED VALUES ('D002', 'R002', 12, 10000);
+INSERT INTO PARTICIPATED VALUES ('D003', 'R003', 13, 8000);
+INSERT INTO PARTICIPATED VALUES ('D004', 'R004', 14, 12000);
+INSERT INTO PARTICIPATED VALUES ('D005', 'R005', 15, 3000);
+
+UPDATE PARTICIPATED
+SET damage_amount = 25000
+WHERE report_no = 12;
+
+-- Inserting a new accident into the ACCIDENT and PARTICIPATED tables
+INSERT INTO ACCIDENT VALUES (16, '2023-08-10', 'Westside');
+INSERT INTO PARTICIPATED VALUES ('D001', 'R001', 16, 15000);
+
+SELECT COUNT(DISTINCT P.driver_idno) AS num_people
+FROM PARTICIPATED P
+JOIN ACCIDENT A ON P.report_no = A.report_no
+WHERE A.date BETWEEN '2022-01-01' AND '2022-12-31';
+
+SELECT COUNT(*) AS num_accidents
+FROM PARTICIPATED P
+JOIN CAR C ON P.regno = C.regno
+WHERE C.model = 'Toyota Corolla';
