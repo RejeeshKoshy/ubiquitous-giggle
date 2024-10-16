@@ -1,81 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Student Registration Form</title>
-		<script src="script.js" defer></script>
-		<link rel="stylesheet" href="style.css">
-		
-	</head>
-	<body>
-		<div class="container">
-			<h2>Student Registration Form</h2>
-			<form id="registrationForm" action="#" method="post" enctype="multipart/form-data">
-				<table>
-					<tr>
-						<td><label for="fname">First Name:</label></td>
-						<td><input type="text" id="fname" name="fname" required></td>
-					</tr>
-					<tr>
-						<td><label for="lname">Last Name:</label></td>
-						<td><input type="text" id="lname" name="lname" required></td>
-					</tr>
-					<tr>
-						<td><label for="email">Email:</label></td>
-						<td><input type="email" id="email" name="email" required></td>
-					</tr>
-					<tr>
-						<td><label for="phone">Phone Number:</label></td>
-						<td><input type="tel" id="phone" name="phone" required></td>
-					</tr>
-					<tr>
-						<td><label for="dob">Date of Birth:</label></td>
-						<td><input type="date" id="dob" name="dob" required></td>
-					</tr>
-					<tr>
-						<td><label for="gender">Gender:</label></td>
-						<td>
-							<select id="gender" name="gender" required>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-								<option value="other">Other</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><label for="address">Address:</label></td>
-						<td><textarea id="address" name="address" rows="3" required></textarea></td>
-					</tr>
-					<tr>
-						<td><label for="course">Course:</label></td>
-						<td>
-							<select id="course" name="course" required>
-								<option value="cs">Computer Science</option>
-								<option value="ee">Electrical Engineering</option>
-								<option value="me">Mechanical Engineering</option>
-								<option value="ce">Civil Engineering</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><label>Upload Photo</label></td>
-						<td>
-							<label for="fileUpload" class="custom-file-upload">Choose Photo</label>
-							<input type="file" id="fileUpload" name="fileUpload" accept="image/*">
-							<img id="imgPreview" class="img-preview" alt="Image Preview">
-						</td>
-					</tr>
-					<tr>
-						<td class="center">
-							<input type="reset" value="Reset">
-						</td>
-						<td class="center">
-							<input type="submit" value="Submit">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejeesh Koshy - Junior CyberSecurity Analyst</title>
+  <meta name="description" content="A professional CV for a Junior CyberSecurity Analyst">
+  <meta name="keywords" content="junior cybersecurity analyst, html, css, javascript, resume">
+  <link rel="shortcut icon" href="path/to/your/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Rejeesh Koshy</h1>
+    <p>Junior CyberSecurity Analyst</p>
+  </header>
+
+  <div class="container">
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Basic Networking Knowledge</li>
+        <li>Operating System Knowledge</li>
+        <li>Cybersecurity Tools</li>
+        <li>Understanding of Security Concepts</li>
+        <li>Incident Response Skills</li>
+        <li>Problem-Solving and Analytical Thinking</li>
+        <li>Scripting/Automation Skills</li>
+        <li>Ethical Hacking Basics</li>
+        <li>Communication Skills</li>
+        <li>Awareness of Cybersecurity Trends</li>
+      </ul>
+    </section>
+
+    <div class="info-section">
+      <section id="contact">
+        <h2>Contact Information</h2>
+        <p>Email: <a href="mailto:rejeeshkoshy10@gmail.com">rejeeshkoshy10@gmail.com</a></p>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+          <h3 class="degree">St. Joseph's University, Bangalore</h3>
+          <p class="qualification">Master's in Computer Application</p>
+          <p class="duration">June 2024 to June 2026</p>
+          <p class="hackathon">Participation in Hackathon: Contributed to a project simplifying bus transportation using NFC technology.</p>
+        </div>
+        <div class="education-item">
+          <h3 class="degree">Christ [Deemed To Be University], Bangalore</h3>
+          <p class="qualification">Bachelor's in Computer Science, Mathematics and Statistics</p>
+          <p class="duration">June 2020 to June 2023</p>
+          <p class="project">Developed a priority-based traffic management system project for emergency vehicles.</p>
+        </div>
+        <div class="education-item">
+          <h3 class="degree">International Indian School, Ajman, UAE</h3>
+          <p class="qualification">SSC, HSC and PUC</p>
+          <p class="duration">2006 to 2020</p>
+          <p class="exhibition">Secured second place in a mathematics exhibition for 4-dimensional space concepts.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <h2>Connect with Me</h2>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/rejeesh-koshy-55b76212a/">LinkedIn</a></li>
+      <li><a href="https://github.com/RejeeshKoshy">GitHub</a></li>
+    </ul>
+  </footer>
+</body>
 </html>

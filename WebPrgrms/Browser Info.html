@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .info-box {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Browser Information</h1>
+
+    <div class="info-box" id="windowInfo">
+        <h3>Window Information:</h3>
+        <p id="windowDetails"></p>
+    </div>
+
+    <div class="info-box" id="historyInfo">
+        <h3>History Information:</h3>
+        <p id="historyDetails"></p>
+    </div>
+
+    <div class="info-box" id="navigatorInfo">
+        <h3>Navigator Information:</h3>
+        <p id="navigatorDetails"></p>
+    </div>
+
+    <div class="info-box" id="screenInfo">
+        <h3>Screen Information:</h3>
+        <p id="screenDetails"></p>
+    </div>
+
+    <script>
+        // Get window information
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        document.getElementById('windowDetails').innerHTML = `Window Width: ${windowWidth}px<br>Window Height: ${windowHeight}px`;
+
+        // Get history information
+        const historyLength = history.length;
+        document.getElementById('historyDetails').innerHTML = `History Length: ${historyLength} pages`;
+
+        // Get navigator information
+        const browserName = navigator.appName;
+        const browserVersion = navigator.appVersion;
+        const userAgent = navigator.userAgent;
+        const platform = navigator.platform;
+        const language = navigator.language;
+        document.getElementById('navigatorDetails').innerHTML = `
+      Browser Name: ${browserName}<br>
+      Browser Version: ${browserVersion}<br>
+      User Agent: ${userAgent}<br>
+      Platform: ${platform}<br>
+      Language: ${language}
+    `;
+
+        // Get screen information
+        const screenWidth = screen.width;
+        const screenHeight = screen.height;
+        const screenColorDepth = screen.colorDepth;
+        document.getElementById('screenDetails').innerHTML = `
+      Screen Width: ${screenWidth}px<br>
+      Screen Height: ${screenHeight}px<br>
+      Color Depth: ${screenColorDepth} bits
+    `;
+    </script>
+
+</body>
+
+</html>

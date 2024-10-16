@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  width: 210mm; /* A4 width */
+  margin: auto;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  border-bottom: 2px solid #333;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+#skills {
+  flex: 1; /* Skills section takes more space */
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  flex: 2; /* Contact and education sections */
+  padding: 20px;
+  background-color: #ffffff; /* White background for main content */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.education-item {
+  margin-bottom: 15px; /* Spacing between education items */
+}
+
+.degree {
+  font-size: 1.5em; /* Larger font size for the degree title */
+  font-weight: bold;
+  margin-bottom: 5px; /* Space below degree title */
+}
+
+.qualification {
+  font-size: 1.2em; /* Slightly smaller than the degree */
+  font-weight: normal;
+  color: #555; /* Lighter color for less emphasis */
+}
+
+.duration {
+  font-size: 1em; /* Standard size for the duration */
+  font-style: italic; /* Italics for a different style */
+}
+
+.hackathon, .project, .exhibition {
+  font-size: 0.9em; /* Smaller font for additional details */
+  margin-top: 5px; /* Space above details */
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+footer li {
+  margin: 0 15px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media print {
+  body {
+    width: auto;
+    height: auto;
+  }
+}
