@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input[type="number"] {
+      padding: 10px;
+      width: 150px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Prime Number Generator</h1>
+  <input type="number" id="maxNumber" placeholder="Enter a number" min="1">
+  <br>
+  <button onclick="generatePrimes()">Generate Primes</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function isPrime(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function generatePrimes() {
+      const max = document.getElementById("maxNumber").value;
+      let primes = [];
+
+      for (let i = 2; i <= max; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+
+      document.getElementById("result").innerHTML = `Prime numbers up to ${max}: ${primes.join(', ')}`;
+    }
+  </script>
+
+</body>
+</html>
