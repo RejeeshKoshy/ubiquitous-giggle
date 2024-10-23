@@ -1,0 +1,30 @@
+<!-- index.jsp -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Form</title>
+</head>
+<body>
+    <form action="submit.jsp" method="post">
+        Username: <input type="text" name="username"><br>
+        Age: <input type="number" name="age"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<!-- submit.jsp -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submission</title>
+</head>
+<body>
+    <h2>Form Submission</h2>
+    Username: <%= request.getParameter("username") %><br>
+    Age: <%= request.getParameter("age") %><br>
+    Current Date and Time: <%= new java.util.Date() %>
+</body>
+</html>

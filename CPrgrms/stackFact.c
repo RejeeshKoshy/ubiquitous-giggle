@@ -6,82 +6,47 @@ Rejeesh Koshy
 ----------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #define SIZE 2
 
-typedef struct stackType
-{
+typedef struct {
 	double A[SIZE];
 	int top;
 } stack;
-stack s;
 
-void InitStack();
-void Push(int num);
-int Pop();
-void Menu(int *choice);
-double StackFact(int n);
+stack s = { .top = 0 };
 
-int main()
-{
-	int num, choice = 1;
-	
-	InitStack();
-	while(choice){
-		Menu(&choice);
-		switch(choice){
-			case 1: printf("\nEnter your number: ");
-					scanf("%d", &num);
-					printf("\nFactorial of the number is %.2f", StackFact(num));
-					getch();
-					break;
-			case 0: exit(1);
-			default:Menu(&choice);
+void push(int num);
+int pop();
+double stackFactorial(int n);
+
+int main() {
+	int choice, num;
+	while (1) {
+		system("cls");
+		printf("---- STACK FACTORIAL ----\n");
+		printf("1. Find Factorial\n0. Exit\n\nChoice: ");
+		scanf("%d", &choice);
+		
+		if (choice == 1) {
+			printf("Enter a number: ");
+			scanf("%d", &num);
+			printf("Factorial: %.2f\n", stackFactorial(num));
+			getchar(); getchar();  
+		} else {
+			exit(0);
 		}
 	}
 	return 0;
 }
-//---------------------------------
-void InitStack()
-{
-	s.top = 0;
-}
-//---------------------------------
-void Push(int num)
-{
-	s.top++;
-	s.A[s.top] = num;
-}
-//---------------------------------
-int Pop()
-{
-	int num;
-	num = s.A[s.top];
-	s.top--;
-	return num;
-}
-//---------------------------------
-double StackFact(int n)
-{
-	int i, num;
-	i = 2;
-	Push(1);
-	while(i<=n){
-		num = Pop();
-		Push(num*i);
-		i++;
+
+void push(int num) { s.A[++s.top] = num; }
+
+int pop() { return s.A[s.top--]; }
+
+double stackFactorial(int n) {
+	push(1);
+	for (int i = 2; i <= n; i++) {
+		push(pop() * i);
 	}
-	num = Pop();
-	return num;
-}
-//---------------------------------
-void Menu(int *choice)
-{
-	system("cls");
-	printf("----------------STACK IMPEMENTATION FOR FACTORIAL----------------");
-	printf("\n\n\t1. Find Factorial\n");
-	printf("\t0. Exit");
-	printf("\n\n");
-	printf("Enter your choice: ");
-	scanf("%d", choice);
+	return pop();
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Array Manipulation</title>
+</head>
+<body>
+  <h2>Check the console for output</h2>
+
+  <script>
+    // Define a student object constructor
+    function Student(name, age, grade) {
+      this.name = name;
+      this.age = age;
+      this.grade = grade;
+    }
+
+    // Create an array of student objects
+    let students = [
+      new Student("John", 16, 85),
+      new Student("Alice", 17, 90),
+      new Student("Bob", 15, 78),
+      new Student("Sara", 16, 92)
+    ];
+
+    // Sort students by grade in descending order
+    students.sort((a, b) => b.grade - a.grade);
+    console.log("Sorted by grade:", students);
+
+    // Filter students who scored above 80
+    let filteredStudents = students.filter(student => student.grade > 80);
+    console.log("Filtered (Grade > 80):", filteredStudents);
+
+    // Find a student by name
+    let findStudent = students.find(student => student.name === "Alice");
+    console.log("Found student (Alice):", findStudent);
+  </script>
+</body>
+</html>

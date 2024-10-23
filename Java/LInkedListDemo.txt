@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        
+        // Adding elements
+        list.add("John");
+        list.add("Paul");
+        list.addLast("George");
+        list.addFirst("Ringo");
+        System.out.println("LinkedList: " + list);
+        
+        // Traversing the list
+        System.out.println("Traversing the list:");
+        for (String name : list) {
+            System.out.println(name);
+        }
+        
+        // Remove first and last elements
+        list.removeFirst();
+        list.removeLast();
+        System.out.println("After removing first and last elements: " + list);
+    }
+}

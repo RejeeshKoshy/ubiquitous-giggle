@@ -1,0 +1,21 @@
+import java.util.HashSet;
+
+public class HashSetDemo {
+    public static void main(String[] args) {
+        HashSet<Integer> studentIDs = new HashSet<>();
+        
+        // Adding student IDs
+        studentIDs.add(101);
+        studentIDs.add(102);
+        studentIDs.add(103);
+        System.out.println("Student IDs: " + studentIDs);
+        
+        // Checking for duplicates
+        boolean added = studentIDs.add(101); // Will return false because 101 is already present
+        System.out.println("Adding 101 again: " + added);
+        
+        // Removing a student ID
+        studentIDs.remove(102);
+        System.out.println("After removing 102: " + studentIDs);
+    }
+}

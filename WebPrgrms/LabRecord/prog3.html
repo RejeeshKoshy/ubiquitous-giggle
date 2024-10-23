@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Numbers between M and N</title>
+</head>
+<body>
+  <h2>Check the console for prime numbers between M and N</h2>
+
+  <script>
+    // Function to check if a number is prime
+    function isPrime(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    // Function to find primes between M and N
+    function findPrimesBetween(M, N) {
+      try {
+        if (typeof M !== "number" || typeof N !== "number") {
+          throw new Error("Both M and N must be numbers.");
+        }
+        if (M > N) {
+          throw new Error("M should be less than or equal to N.");
+        }
+
+        const primes = [];
+        for (let i = M; i <= N; i++) {
+          if (isPrime(i)) primes.push(i);
+        }
+        console.log(`Prime numbers between ${M} and ${N}:`, primes);
+      } catch (error) {
+        console.error("Error:", error.message);
+      } finally {
+        console.log("Execution of prime number calculation completed.");
+      }
+    }
+
+    // Call the function
+    findPrimesBetween(10, 30);  // Valid input
+    findPrimesBetween("ten", 30);  // Invalid input, triggers error
+  </script>
+</body>
+</html>

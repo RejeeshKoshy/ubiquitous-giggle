@@ -1,0 +1,39 @@
+<!-- form.jsp -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GET and POST Form</title>
+</head>
+<body>
+    <form action="response.jsp" method="get">
+        Username: <input type="text" name="username"><br>
+        <input type="submit" value="Submit with GET">
+    </form>
+
+    <form action="response.jsp" method="post">
+        Username: <input type="text" name="username"><br>
+        <input type="submit" value="Submit with POST">
+    </form>
+</body>
+</html>
+
+<!-- response.jsp -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response</title>
+</head>
+<body>
+    <% 
+    String method = request.getMethod();
+    String username = request.getParameter("username");
+    if ("GET".equals(method)) {
+        out.println("Hello, " + username + ". You submitted the form using GET method.");
+    } else if ("POST".equals(method)) {
+        out.println("Hello, " + username + ". You submitted the form using POST method.");
+    }
+    %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Information</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    p { margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h2>Browser Information</h2>
+  <p id="info"></p>
+
+  <script>
+    // Display browser information
+    const info = `
+      <strong>Window Inner Size:</strong> ${window.innerWidth} x ${window.innerHeight}<br>
+      <strong>History Length:</strong> ${history.length}<br>
+      <strong>Navigator:</strong> ${navigator.userAgent}<br>
+      <strong>Screen Resolution:</strong> ${screen.width} x ${screen.height}
+    `;
+    document.getElementById('info').innerHTML = info;
+  </script>
+</body>
+</html>

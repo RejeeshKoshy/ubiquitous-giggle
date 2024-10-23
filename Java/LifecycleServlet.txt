@@ -1,0 +1,23 @@
+import javax.servlet.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class LifecycleServlet extends GenericServlet {
+    
+    @Override
+    public void init() throws ServletException {
+        System.out.println("Servlet is initialized.");
+    }
+
+    @Override
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<h1>Handling Request in Service Method</h1>");
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("Servlet is destroyed.");
+    }
+}

@@ -1,0 +1,133 @@
+-- 1. Create the database
+CREATE DATABASE company_db;
+
+-- 2. Use the database
+USE company_db;
+
+-- 3. Create the employees table
+CREATE TABLE employees (
+    emp_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name TEXT,
+    position TEXT,
+    salary DECIMAL(10, 2)
+);
+
+-- 4. Create a stored procedure to update employee records
+DELIMITER $$
+CREATE PROCEDURE update_employee(IN emp_id INT, IN emp_name TEXT, IN emp_position TEXT, IN emp_salary DECIMAL(10, 2))
+BEGIN
+    UPDATE employees
+    SET name = emp_name, position = emp_position, salary = emp_salary
+    WHERE emp_id = emp_id;
+END $$
+DELIMITER ;
+
+-- 5. Create a stored procedure to delete employee records
+DELIMITER $$
+CREATE PROCEDURE delete_employee(IN emp_id INT)
+BEGIN
+    DELETE FROM employees WHERE emp_id = emp_id;
+END $$
+DELIMITER ;
+
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class EmployeeManagerCRUD {
+
+    // MySQL Database credentials
+    static final String DB_URL = "jdbc:mysql://localhost:3306/company_db";
+    static final String USER = "root";  // Replace with your MySQL username
+    static final String PASS = "password";  // Replace with your MySQL password
+
+    public static void main(String[] args) {
+        Connection conn = null;
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            // 1. Establish a connection
+            System.out.println("Connecting to the database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Connected to database successfully!");
+
+            while (true) {
+                System.out.println("\nMenu:");
+                System.out.println("1. Update an employee");
+                System.out.println("2. Delete an employee");
+                System.out.println("3. Exit");
+                System.out.print("Choose an option: ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        updateEmployee(conn);
+                        break;
+                    case 2:
+                        deleteEmployee(conn);
+                        break;
+                    case 3:
+                        System.out.println("Exiting program...");
+                        return;
+                    default:
+                        System.out.println("Invalid option, please try again.");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                System.out.println("Database connection closed.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Method to update an employee record using a CallableStatement
+    private static void updateEmployee(Connection conn) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter employee ID to update: ");
+        int emp_id = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+
+        System.out.print("Enter new employee name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter new employee position: ");
+        String position = scanner.nextLine();
+        System.out.print("Enter new employee salary: ");
+        double salary = scanner.nextDouble();
+
+        // Prepare the callable statement to call the stored procedure
+        String sql = "{CALL update_employee(?, ?, ?, ?)}";
+        CallableStatement cstmt = conn.prepareCall(sql);
+        cstmt.setInt(1, emp_id);
+        cstmt.setString(2, name);
+        cstmt.setString(3, position);
+        cstmt.setDouble(4, salary);
+
+        // Execute the procedure
+        cstmt.execute();
+        System.out.println("Employee record updated successfully!");
+    }
+
+    // Method to delete an employee record using a CallableStatement
+    private static void deleteEmployee(Connection conn) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter employee ID to delete: ");
+        int emp_id = scanner.nextInt();
+
+        // Prepare the callable statement to call the stored procedure
+        String sql = "{CALL delete_employee(?)}";
+        CallableStatement cstmt = conn.prepareCall(sql);
+        cstmt.setInt(1, emp_id);
+
+        // Execute the procedure
+        cstmt.execute();
+        System.out.println("Employee record deleted successfully!");
+    }
+}

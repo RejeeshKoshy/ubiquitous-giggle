@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Operators & Control Statements</title>
+</head>
+<body>
+  <h2>Check the console for output</h2>
+
+  <script>
+    // Assignment Operator
+    let a = 5;
+    let b = 10;
+
+    console.log("Assignment Operator: a =", a, ", b =", b);
+
+    // Bitwise Operator
+    let bitwiseAnd = a & b; // 0101 & 1010 = 0000
+    console.log("Bitwise AND (a & b):", bitwiseAnd);
+
+    // String Operator
+    let str1 = "Hello";
+    let str2 = "World";
+    let combinedStr = str1 + " " + str2;
+    console.log("String Concatenation:", combinedStr);
+
+    // Ternary Operator
+    let max = (a > b) ? a : b;
+    console.log("Ternary Operator (max of a and b):", max);
+
+    // Unary Operator
+    let negation = -a;
+    console.log("Unary Operator (negation of a):", negation);
+
+    // Comma Operator
+    let commaOp = (a++, b++, a + b);
+    console.log("Comma Operator Result (a++, b++, a + b):", commaOp);
+
+    // Control Statement: if-else
+    if (a > b) {
+      console.log("If-Else: a is greater than b");
+    } else {
+      console.log("If-Else: b is greater than or equal to a");
+    }
+
+    // Control Statement: switch-case
+    let choice = 2;
+    switch (choice) {
+      case 1:
+        console.log("Switch-Case: Choice is 1");
+        break;
+      case 2:
+        console.log("Switch-Case: Choice is 2");
+        break;
+      case 3:
+        console.log("Switch-Case: Choice is 3");
+        break;
+      default:
+        console.log("Switch-Case: Invalid Choice");
+    }
+  </script>
+</body>
+</html>
