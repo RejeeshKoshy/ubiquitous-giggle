@@ -77,77 +77,76 @@
 </head>
 <body>
 
-<h1>Student Course Registration</h1>
+	<h1>Student Course Registration</h1>
 
-<form id="registrationForm">
-  <div class="form-section">
-    <div class="form-group">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter full name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="Enter email" required>
-    </div>
-  </div>
+	<form id="registrationForm">
+	  <div class="form-section">
+		<div class="form-group">
+		  <label for="name">Full Name</label>
+		  <input type="text" id="name" name="name" placeholder="Enter full name" required>
+		</div>
+		<div class="form-group">
+		  <label for="email">Email Address</label>
+		  <input type="email" id="email" name="email" placeholder="Enter email" required>
+		</div>
+	  </div>
 
-  <div class="form-section">
-    <div class="form-group">
-      <label for="studentID">Student ID</label>
-      <input type="text" id="studentID" name="studentID" placeholder="Enter student ID" required>
-    </div>
-    <div class="form-group">
-      <label for="semester">Semester</label>
-      <select id="semester" name="semester" required>
-        <option value="">Select a semester</option>
-        <option value="spring">Spring</option>
-        <option value="summer">Summer</option>
-        <option value="fall">Fall</option>
-      </select>
-    </div>
-  </div>
+	  <div class="form-section">
+		<div class="form-group">
+		  <label for="studentID">Student ID</label>
+		  <input type="text" id="studentID" name="studentID" placeholder="Enter student ID" required>
+		</div>
+		<div class="form-group">
+		  <label for="semester">Semester</label>
+		  <select id="semester" name="semester" required>
+			<option value="">Select a semester</option>
+			<option value="spring">Spring</option>
+			<option value="summer">Summer</option>
+			<option value="fall">Fall</option>
+		  </select>
+		</div>
+	  </div>
 
-  <h3>Choose Courses</h3>
-  <div class="form-section">
-    <div class="form-group">
-      <label for="course1">Course 1</label>
-      <select id="course1" name="course1" required>
-        <option value="">Select a course</option>
-        <option value="math101">Math 101</option>
-        <option value="cs101">CS 101</option>
-        <option value="phy101">Physics 101</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="course2">Course 2</label>
-      <select id="course2" name="course2" required>
-        <option value="">Select a course</option>
-        <option value="eng101">English 101</option>
-        <option value="chem101">Chemistry 101</option>
-        <option value="hist101">History 101</option>
-      </select>
-    </div>
-  </div>
+	  <h3>Choose Courses</h3>
+	  <div class="form-section">
+		<div class="form-group">
+		  <label for="course1">Course 1</label>
+		  <select id="course1" name="course1" required>
+			<option value="">Select a course</option>
+			<option value="math101">Math 101</option>
+			<option value="cs101">CS 101</option>
+			<option value="phy101">Physics 101</option>
+		  </select>
+		</div>
+		<div class="form-group">
+		  <label for="course2">Course 2</label>
+		  <select id="course2" name="course2" required>
+			<option value="">Select a course</option>
+			<option value="eng101">English 101</option>
+			<option value="chem101">Chemistry 101</option>
+			<option value="hist101">History 101</option>
+		  </select>
+		</div>
+	  </div>
 
-  <button type="submit">Register</button>
-</form>
+	  <button type="submit">Register</button>
+	</form>
 
-<script>
-  document.getElementById('registrationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let name = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let studentID = document.getElementById('studentID').value;
-    let course1 = document.getElementById('course1').value;
-    let course2 = document.getElementById('course2').value;
+	<script>
+	  document.getElementById('registrationForm').addEventListener('submit', function(e) {
+		e.preventDefault();
+		let name = document.getElementById('name').value;
+		let email = document.getElementById('email').value;
+		let studentID = document.getElementById('studentID').value;
+		let course1 = document.getElementById('course1').value;
+		let course2 = document.getElementById('course2').value;
 
-    if (name && email && studentID && course1 && course2) {
-      alert('Registration Successful!');
-    } else {
-      alert('Please fill all required fields.');
-    }
-  });
-</script>
-
+		if (name && email && studentID && course1 && course2) {
+		  alert('Registration Successful!');
+		} else {
+		  alert('Please fill all required fields.');
+		}
+	  });
+	</script>
 </body>
 </html>
